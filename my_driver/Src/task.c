@@ -5,19 +5,21 @@
  *      Author: mary_uri
  */
 
-#include "task.h"
-#include "my_rtos.h"
+#include <my_rtos.h>
 
-void MyRTOSCreate(My_RTOS_Control *mRTOS, char *Task_Name, uint8_t Task_Priority) {
-	My_RTOS_Task task = malloc(sizeof(My_RTOS_Task));
+void MyRTOSTaskCreate(My_RTOS_Control *mRTOS, char *Task_Name, uint8_t Task_Priority, void (*mFunc)(void)) {
+	My_RTOS_Task* task = (My_RTOS_Task *)malloc(sizeof(My_RTOS_Task));
 	if (task) {
 		task->Task_Name = Task_Name;
 		task->Task_ID = mRTOS->RTOS_AvailableID++;
 		task->Task_Priority = Task_Priority;
 		task->Task_State = READY;
-		task->Task_Function = (void *)Task_Name;
-		task->Task_DelayTisks = 0;
+		task->Task_Func = mFunc;
+		task->Task_DelayTicks = 0;
+
+		EnList(&mRTOS->RTOS_Tasks, task);
+		PushQueue(&mRTOS->RTOS_ReadyTasks, task);
 	} else {
-		error(0);
+		perror("Over memory!");
 	}
 }
