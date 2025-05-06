@@ -2852,7 +2852,7 @@ Discarded input sections
  .text.MyDelay  0x00000000       0x34 ./my_driver/Src/my_rtos.o
  .text.MyTickHandler
                 0x00000000       0xa0 ./my_driver/Src/my_rtos.o
- .debug_info    0x00000000      0x33c ./my_driver/Src/my_rtos.o
+ .debug_info    0x00000000      0x34a ./my_driver/Src/my_rtos.o
  .debug_abbrev  0x00000000      0x111 ./my_driver/Src/my_rtos.o
  .debug_aranges
                 0x00000000       0x30 ./my_driver/Src/my_rtos.o
@@ -2892,7 +2892,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 ./my_driver/Src/my_rtos.o
  .debug_macro   0x00000000      0x146 ./my_driver/Src/my_rtos.o
  .debug_line    0x00000000      0x682 ./my_driver/Src/my_rtos.o
- .debug_str     0x00000000     0x7a29 ./my_driver/Src/my_rtos.o
+ .debug_str     0x00000000     0x7a36 ./my_driver/Src/my_rtos.o
  .comment       0x00000000       0x44 ./my_driver/Src/my_rtos.o
  .debug_frame   0x00000000       0x7c ./my_driver/Src/my_rtos.o
  .ARM.attributes
@@ -2949,12 +2949,14 @@ Discarded input sections
                 0x00000000       0x4c ./my_driver/Src/my_struct.o
  .text.TakeSemaphore
                 0x00000000       0x34 ./my_driver/Src/my_struct.o
- .debug_info    0x00000000      0x461 ./my_driver/Src/my_struct.o
- .debug_abbrev  0x00000000      0x15f ./my_driver/Src/my_struct.o
+ .text.ReleaseSemaphore
+                0x00000000       0x48 ./my_driver/Src/my_struct.o
+ .debug_info    0x00000000      0x50c ./my_driver/Src/my_struct.o
+ .debug_abbrev  0x00000000      0x160 ./my_driver/Src/my_struct.o
  .debug_aranges
-                0x00000000       0x60 ./my_driver/Src/my_struct.o
+                0x00000000       0x68 ./my_driver/Src/my_struct.o
  .debug_rnglists
-                0x00000000       0x45 ./my_driver/Src/my_struct.o
+                0x00000000       0x4b ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000      0x18b ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000      0xab4 ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000       0x22 ./my_driver/Src/my_struct.o
@@ -2988,10 +2990,10 @@ Discarded input sections
  .debug_macro   0x00000000       0x1c ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000       0x16 ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000      0x146 ./my_driver/Src/my_struct.o
- .debug_line    0x00000000      0x804 ./my_driver/Src/my_struct.o
- .debug_str     0x00000000     0x7a4b ./my_driver/Src/my_struct.o
+ .debug_line    0x00000000      0x82b ./my_driver/Src/my_struct.o
+ .debug_str     0x00000000     0x7ad1 ./my_driver/Src/my_struct.o
  .comment       0x00000000       0x44 ./my_driver/Src/my_struct.o
- .debug_frame   0x00000000      0x158 ./my_driver/Src/my_struct.o
+ .debug_frame   0x00000000      0x17c ./my_driver/Src/my_struct.o
  .ARM.attributes
                 0x00000000       0x34 ./my_driver/Src/my_struct.o
  .group         0x00000000        0xc ./my_driver/Src/task.o
@@ -3032,7 +3034,7 @@ Discarded input sections
  .rodata        0x00000000        0xd ./my_driver/Src/task.o
  .text.MyRTOSTaskCreate
                 0x00000000       0x7c ./my_driver/Src/task.o
- .debug_info    0x00000000      0x2fa ./my_driver/Src/task.o
+ .debug_info    0x00000000      0x308 ./my_driver/Src/task.o
  .debug_abbrev  0x00000000       0xef ./my_driver/Src/task.o
  .debug_aranges
                 0x00000000       0x20 ./my_driver/Src/task.o
@@ -3072,7 +3074,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 ./my_driver/Src/task.o
  .debug_macro   0x00000000      0x146 ./my_driver/Src/task.o
  .debug_line    0x00000000      0x606 ./my_driver/Src/task.o
- .debug_str     0x00000000     0x79f4 ./my_driver/Src/task.o
+ .debug_str     0x00000000     0x7a01 ./my_driver/Src/task.o
  .comment       0x00000000       0x44 ./my_driver/Src/task.o
  .debug_frame   0x00000000       0x34 ./my_driver/Src/task.o
  .ARM.attributes
@@ -3885,20 +3887,20 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000     0xc2a0
- .debug_info    0x00000000      0xd90 ./Core/Src/main.o
- .debug_info    0x00000d90      0x8fc ./Core/Src/stm32f4xx_hal_msp.o
- .debug_info    0x0000168c      0xbee ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_info    0x0000227a      0x6db ./Core/Src/stm32f4xx_it.o
- .debug_info    0x00002955      0x512 ./Core/Src/system_stm32f4xx.o
- .debug_info    0x00002e67       0x30 ./Core/Startup/startup_stm32f407vgtx.o
- .debug_info    0x00002e97      0x944 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_info    0x000037db      0xd8c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_info    0x00004567      0x6c3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_info    0x00004c2a      0x8af ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_info    0x000054d9     0x299d ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_info    0x00007e76     0x14db ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_info    0x00009351     0x2f4f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+.debug_info     0x00000000     0xc2ae
+ .debug_info    0x00000000      0xd9e ./Core/Src/main.o
+ .debug_info    0x00000d9e      0x8fc ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_info    0x0000169a      0xbee ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_info    0x00002288      0x6db ./Core/Src/stm32f4xx_it.o
+ .debug_info    0x00002963      0x512 ./Core/Src/system_stm32f4xx.o
+ .debug_info    0x00002e75       0x30 ./Core/Startup/startup_stm32f407vgtx.o
+ .debug_info    0x00002ea5      0x944 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_info    0x000037e9      0xd8c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_info    0x00004575      0x6c3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_info    0x00004c38      0x8af ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_info    0x000054e7     0x299d ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_info    0x00007e84     0x14db ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x0000935f     0x2f4f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_abbrev   0x00000000     0x1a9f
  .debug_abbrev  0x00000000      0x269 ./Core/Src/main.o
@@ -4065,7 +4067,7 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 
 .debug_str      0x00000000    0xcabb3
  .debug_str     0x00000000    0xc7c70 ./Core/Src/main.o
-                              0xc7fd1 (size before relaxing)
+                              0xc7fde (size before relaxing)
  .debug_str     0x000c7c70       0xf9 ./Core/Src/stm32f4xx_hal_msp.o
                               0xc438b (size before relaxing)
  .debug_str     0x000c7d69      0x60a ./Core/Src/stm32f4xx_hal_timebase_tim.o

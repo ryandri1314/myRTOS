@@ -7,3 +7,4 @@
 ../my_driver/Src/my_struct.c:103:6:DeList	24	static
 ../my_driver/Src/my_struct.c:128:15:CreateSemaphore	16	static
 ../my_driver/Src/my_struct.c:141:6:TakeSemaphore	16	static
+../my_driver/Src/my_struct.c:150:6:ReleaseSemaphore	24	static

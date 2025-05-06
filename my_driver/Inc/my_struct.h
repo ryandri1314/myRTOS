@@ -10,6 +10,15 @@
 
 #include <task.h>
 
+typedef enum {
+	TYPE_UINT8,
+	TYPE_UINT16,
+	TYPE_UINT32,
+	TYPE_FLOAT,
+	TYPE_DOUBLE,
+	TYPE_PCHAR,
+} DataType;
+
 struct My_RTOS_Control;
 typedef struct My_RTOS_Control My_RTOS_Control;
 
@@ -34,8 +43,32 @@ typedef struct My_Semaphore {
 	My_Queue Se_WaitingTasks;
 } My_Semaphore;
 
-/* Node Function */
+typedef struct NodeData {
+	struct NodeData *next;
+	DataType type;
+	union {
+		uint8_t		u8;
+		uint16_t	u16;
+		uint32_t	u32;
+		double		db;
+		float		f32;
+		char*		pc;
+	} data;
+} NodeData;
+
+typedef struct My_MessQueue {
+	NodeData *front;
+	NodeData *rear;
+} My_MessQueue;
+
+/* Node & NodeData Function */
 Node* CreateNode(My_RTOS_Task *task);
+NodeData* CreateNodeData_U8(uint8_t data);
+NodeData* CreateNodeData_U16(uint16_t data);
+NodeData* CreateNodeData_U32(uint32_t data);
+NodeData* CreateNodeData_F32(float data);
+NodeData* CreateNodeData_DB(double data);
+NodeData* CreateNodeData_PC(char *data);
 
 /* Queue Function */
 My_Queue* CreateQueue();
@@ -51,5 +84,15 @@ void DeList(My_List *mList, My_RTOS_Task *task);
 My_Semaphore* CreateSemaphore();
 void TakeSemaphore(My_Semaphore *mSe, My_RTOS_Task *task);
 void ReleaseSemaphore(My_RTOS_Control *mControl, My_Semaphore *mSe);
+
+/* MessQueue Function */
+My_MessQueue* CreateMessQueue();
+void PushMessQueue_U8(My_MessQueue *mDataQueue, uint8_t data);
+void PushMessQueue_U16(My_MessQueue *mDataQueue, uint16_t data);
+void PushMessQueue_U32(My_MessQueue *mDataQueue, uint32_t data);
+void PushMessQueue_F32(My_MessQueue *mDataQueue, float data);
+void PushMessQueue_DB(My_MessQueue *mDataQueue, double data);
+void PushMessQueue_PC(My_MessQueue *mDataQueue, char* data);
+NodeData* PopMessQueue(My_MessQueue *mDataQueue);
  
 #endif /* INC_MY_STRUCT_H_ */
