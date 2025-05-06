@@ -1,7 +1,7 @@
 ../my_driver/Src/my_struct.c:11:7:CreateNode	24	static
 ../my_driver/Src/my_struct.c:24:11:CreateQueue	16	static
 ../my_driver/Src/my_struct.c:36:6:PushQueue	24	static
-../my_driver/Src/my_struct.c:56:7:PopQueue	24	static
-../my_driver/Src/my_struct.c:68:10:CreateList	16	static
-../my_driver/Src/my_struct.c:80:6:EnList	24	static
-../my_driver/Src/my_struct.c:95:6:DeList	24	static
+../my_driver/Src/my_struct.c:61:7:PopQueue	24	static
+../my_driver/Src/my_struct.c:76:10:CreateList	16	static
+../my_driver/Src/my_struct.c:88:6:EnList	24	static
+../my_driver/Src/my_struct.c:103:6:DeList	24	static

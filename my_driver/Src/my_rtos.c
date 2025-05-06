@@ -29,6 +29,7 @@ void MyTickHandler(My_RTOS_Control *mControl) {
 			curr->task->Task_DelayTicks--;
 		} else if (curr->task->Task_DelayTicks == 0) {
 			curr->task->Task_State = READY;
+			PushQueue(&mControl->RTOS_ReadyTasks, curr->task);
 			if (prev == NULL) {
 				mControl->RTOS_BlockedTasks.head = next;
 			} else {

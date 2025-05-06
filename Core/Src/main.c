@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <my_rtos.h>
 
 /* USER CODE END Includes */
 

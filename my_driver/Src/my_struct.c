@@ -41,10 +41,15 @@ void PushQueue(My_Queue *mQueue, My_RTOS_Task *task) {
 	}
 
 	Node *tempNode = mQueue->front;
+	Node *pushNode = CreateNode(task);
+	if (task->Task_Priority > tempNode->task->Task_Priority) {
+		pushNode->next = tempNode;
+		mQueue->front = pushNode;
+		return;
+	}
 	while (tempNode->next != NULL && tempNode->next->task->Task_Priority < task->Task_Priority) {
 		tempNode = tempNode->next;
 	}
-	Node *pushNode = CreateNode(task);
 	pushNode->next = tempNode->next;
 	if (pushNode->next == NULL) {
 		mQueue->rear = pushNode;
@@ -54,6 +59,9 @@ void PushQueue(My_Queue *mQueue, My_RTOS_Task *task) {
 }
 
 Node* PopQueue(My_Queue *mQueue) {
+	if (!mQueue->front) {
+		return NULL;
+	}
 	Node* tempNode = mQueue->front;
 	if (mQueue->front == mQueue->rear) {
 		mQueue->front = NULL;
