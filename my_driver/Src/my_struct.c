@@ -123,3 +123,36 @@ void DeList(My_List *mList, My_RTOS_Task *task) {
 		temp = temp->next;
 	}
 }
+
+/* Semaphore Function */
+My_Semaphore* CreateSemaphore() {
+	My_Semaphore *newSe = (My_Semaphore *)malloc(sizeof(My_Semaphore));
+	if (newSe) {
+		newSe->Se_Count = 1;
+		newSe->Se_RunningTask = NULL;
+		newSe->Se_WaitingTasks = *CreateQueue();
+		return newSe;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
+void TakeSemaphore(My_Semaphore *mSe, My_RTOS_Task *task) {
+	if (mSe->Se_Count) {
+		mSe->Se_Count = 0;
+		mSe->Se_RunningTask = task;
+	} else {
+		PushQueue(&mSe->Se_WaitingTasks, task);
+	}
+}
+
+void ReleaseSemaphore(My_RTOS_Control *mControl, My_Semaphore *mSe) {
+	mSe->Se_Count = 1;
+	mSe->Se_RunningTask = NULL;
+	Node *tempNode = PopQueue(&mSe->Se_WaitingTasks);
+	if (tempNode) {
+		PushQueue(&mControl->RTOS_ReadyTasks, tempNode->task);
+	}
+	free(tempNode);
+}

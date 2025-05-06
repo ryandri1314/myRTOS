@@ -17,6 +17,7 @@ typedef struct My_RTOS_Control My_RTOS_Control;
 #define RUNNING		1
 #define READY		2
 #define BLOCKED		3
+#define WAITING		4
 #define SUSPEND		0
 
 typedef struct My_RTOS_Task {

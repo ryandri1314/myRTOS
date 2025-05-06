@@ -28,9 +28,11 @@ typedef struct My_List {
 	Node *tail;
 } My_List;
 
-typedef struct My_Semaphorn {
+typedef struct My_Semaphore {
 	uint8_t Se_Count;
-} My_Semaphorn;
+	My_RTOS_Task *Se_RunningTask;
+	My_Queue Se_WaitingTasks;
+} My_Semaphore;
 
 /* Node Function */
 Node* CreateNode(My_RTOS_Task *task);
@@ -44,5 +46,10 @@ Node* PopQueue(My_Queue *mQueue);
 My_List* CreateList();
 void EnList(My_List *mList, My_RTOS_Task *task);
 void DeList(My_List *mList, My_RTOS_Task *task);
+
+/* Semaphore Function */
+My_Semaphore* CreateSemaphore();
+void TakeSemaphore(My_Semaphore *mSe, My_RTOS_Task *task);
+void ReleaseSemaphore(My_RTOS_Control *mControl, My_Semaphore *mSe);
  
 #endif /* INC_MY_STRUCT_H_ */

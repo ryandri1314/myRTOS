@@ -5,3 +5,5 @@
 ../my_driver/Src/my_struct.c:76:10:CreateList	2
 ../my_driver/Src/my_struct.c:88:6:EnList	3
 ../my_driver/Src/my_struct.c:103:6:DeList	6
+../my_driver/Src/my_struct.c:128:15:CreateSemaphore	2
+../my_driver/Src/my_struct.c:141:6:TakeSemaphore	2
