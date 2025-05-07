@@ -148,6 +148,31 @@ void PushQueue(My_Queue *mQueue, My_RTOS_Task *task) {
 	}
 }
 
+void PushMessQueue(My_MessQueue *mMessQueue, NodeData *mNode) {
+	if (mMessQueue->front == NULL) {
+		mMessQueue->front = mNode;
+		mMessQueue->rear = mNode;
+	} else {
+		mNode->next = mMessQueue->front;
+		mMessQueue->front = mNode;
+	}
+}
+
+NodeData* PopMessQueue(My_MessQueue *mMessQueue) {
+	if (mMessQueue->front == mMessQueue->rear) {
+		NodeData *ret = mMessQueue->front;
+		ret->next = NULL;
+		mMessQueue->front = NULL;
+		mMessQueue->rear = NULL;
+		return ret;
+	} else {
+		NodeData *ret = mMessQueue->front;
+		mMessQueue->front = ret->next;
+		ret->next = NULL;
+		return ret;
+	}
+}
+
 Node* PopQueue(My_Queue *mQueue) {
 	if (!mQueue->front) {
 		return NULL;
@@ -262,29 +287,56 @@ My_MessQueue* CreateMessQueue() {
 }
 
 void MessQueueSend_U8(My_MessQueue *mDataQueue, uint8_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
-
+	NodeData *newNode = CreateNodeData_U8(data, taskIDSend, taskIDReceive);
+	if(newNode) {
+		PushMessQueue(mDataQueue, newNode);
+	}
 }
 
 void MessQueueSend_U16(My_MessQueue *mDataQueue, uint16_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
-
+	NodeData *newNode = CreateNodeData_U16(data, taskIDSend, taskIDReceive);
+	if(newNode) {
+		PushMessQueue(mDataQueue, newNode);
+	}
 }
 
 void MessQueueSend_U32(My_MessQueue *mDataQueue, uint32_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
-
+	NodeData *newNode = CreateNodeData_U32(data, taskIDSend, taskIDReceive);
+	if(newNode) {
+		PushMessQueue(mDataQueue, newNode);
+	}
 }
 
 void MessQueueSend_F32(My_MessQueue *mDataQueue, float data, uint8_t taskIDSend, uint8_t taskIDReceive) {
-
+	NodeData *newNode = CreateNodeData_F32(data, taskIDSend, taskIDReceive);
+	if(newNode) {
+		PushMessQueue(mDataQueue, newNode);
+	}
 }
 
 void MessQueueSend_DB(My_MessQueue *mDataQueue, double data, uint8_t taskIDSend, uint8_t taskIDReceive) {
-
+	NodeData *newNode = CreateNodeData_DB(data, taskIDSend, taskIDReceive);
+	if(newNode) {
+		PushMessQueue(mDataQueue, newNode);
+	}
 }
 
 void MessQueueSend_PC(My_MessQueue *mDataQueue, char* data, uint8_t taskIDSend, uint8_t taskIDReceive) {
-
+	NodeData *newNode = CreateNodeData_PC(data, taskIDSend, taskIDReceive);
+	if(newNode) {
+		PushMessQueue(mDataQueue, newNode);
+	}
 }
 
-NodeData* MessQueueReceive(My_MessQueue *mDataQueue, uint8_t taskIDSend, uint8_t taskIDReceive) {
-
+NodeData* MessQueueReceive(My_MessQueue *mDataQueue, My_RTOS_Task *task, uint8_t taskIDSend) {
+	NodeData *tempNode = mDataQueue->front;
+	if(tempNode && task->Task_ID == tempNode->ReceiveID && tempNode->SendID == taskIDSend) {
+		tempNode = PopMessQueue(mDataQueue);
+		PopQueue(&mDataQueue->WaitingTasks);
+		return tempNode;
+	} else {
+		PushQueue(&mDataQueue->WaitingTasks, task);
+		task->Task_State = WAITING;
+	}
+	return NULL;
 }

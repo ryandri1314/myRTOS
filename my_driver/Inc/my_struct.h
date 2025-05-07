@@ -66,17 +66,19 @@ typedef struct My_MessQueue {
 
 /* Node & NodeData Function */
 Node* CreateNode(My_RTOS_Task *task);
-NodeData* CreateNodeData_U8(uint8_t data);
-NodeData* CreateNodeData_U16(uint16_t data);
-NodeData* CreateNodeData_U32(uint32_t data);
-NodeData* CreateNodeData_F32(float data);
-NodeData* CreateNodeData_DB(double data);
-NodeData* CreateNodeData_PC(char *data);
+NodeData* CreateNodeData_U8(uint8_t data, uint8_t taskIDSend, uint8_t taskIDReceive);
+NodeData* CreateNodeData_U16(uint16_t data, uint8_t taskIDSend, uint8_t taskIDReceive);
+NodeData* CreateNodeData_U32(uint32_t data, uint8_t taskIDSend, uint8_t taskIDReceive);
+NodeData* CreateNodeData_F32(float data, uint8_t taskIDSend, uint8_t taskIDReceive);
+NodeData* CreateNodeData_DB(double data, uint8_t taskIDSend, uint8_t taskIDReceive);
+NodeData* CreateNodeData_PC(char *data, uint8_t taskIDSend, uint8_t taskIDReceive);
 
 /* Queue Function */
 My_Queue* CreateQueue();
 void PushQueue(My_Queue *mQueue, My_RTOS_Task *task);
 Node* PopQueue(My_Queue *mQueue);
+void PushMessQueue(My_MessQueue *mMessQueue, NodeData *mNode);
+NodeData* PopMessQueue(My_MessQueue *mMessQueue);
 
 /* List Function */
 My_List* CreateList();
@@ -96,6 +98,6 @@ void MessQueueSend_U32(My_MessQueue *mDataQueue, uint32_t data, uint8_t taskIDSe
 void MessQueueSend_F32(My_MessQueue *mDataQueue, float data, uint8_t taskIDSend, uint8_t taskIDReceive);
 void MessQueueSend_DB(My_MessQueue *mDataQueue, double data, uint8_t taskIDSend, uint8_t taskIDReceive);
 void MessQueueSend_PC(My_MessQueue *mDataQueue, char* data, uint8_t taskIDSend, uint8_t taskIDReceive);
-NodeData* MessQueueReceive(My_MessQueue *mDataQueue, uint8_t taskIDSend, uint8_t taskIDReceive);
+NodeData* MessQueueReceive(My_MessQueue *mDataQueue, My_RTOS_Task *task, uint8_t taskIDSend);
  
 #endif /* INC_MY_STRUCT_H_ */
