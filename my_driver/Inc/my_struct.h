@@ -45,6 +45,8 @@ typedef struct My_Semaphore {
 
 typedef struct NodeData {
 	struct NodeData *next;
+	uint8_t SendID;
+	uint8_t ReceiveID;
 	DataType type;
 	union {
 		uint8_t		u8;
@@ -59,6 +61,7 @@ typedef struct NodeData {
 typedef struct My_MessQueue {
 	NodeData *front;
 	NodeData *rear;
+	My_Queue WaitingTasks;
 } My_MessQueue;
 
 /* Node & NodeData Function */
@@ -87,12 +90,12 @@ void ReleaseSemaphore(My_RTOS_Control *mControl, My_Semaphore *mSe);
 
 /* MessQueue Function */
 My_MessQueue* CreateMessQueue();
-void PushMessQueue_U8(My_MessQueue *mDataQueue, uint8_t data);
-void PushMessQueue_U16(My_MessQueue *mDataQueue, uint16_t data);
-void PushMessQueue_U32(My_MessQueue *mDataQueue, uint32_t data);
-void PushMessQueue_F32(My_MessQueue *mDataQueue, float data);
-void PushMessQueue_DB(My_MessQueue *mDataQueue, double data);
-void PushMessQueue_PC(My_MessQueue *mDataQueue, char* data);
-NodeData* PopMessQueue(My_MessQueue *mDataQueue);
+void MessQueueSend_U8(My_MessQueue *mDataQueue, uint8_t data, uint8_t taskIDSend, uint8_t taskIDReceive);
+void MessQueueSend_U16(My_MessQueue *mDataQueue, uint16_t data, uint8_t taskIDSend, uint8_t taskIDReceive);
+void MessQueueSend_U32(My_MessQueue *mDataQueue, uint32_t data, uint8_t taskIDSend, uint8_t taskIDReceive);
+void MessQueueSend_F32(My_MessQueue *mDataQueue, float data, uint8_t taskIDSend, uint8_t taskIDReceive);
+void MessQueueSend_DB(My_MessQueue *mDataQueue, double data, uint8_t taskIDSend, uint8_t taskIDReceive);
+void MessQueueSend_PC(My_MessQueue *mDataQueue, char* data, uint8_t taskIDSend, uint8_t taskIDReceive);
+NodeData* MessQueueReceive(My_MessQueue *mDataQueue, uint8_t taskIDSend, uint8_t taskIDReceive);
  
 #endif /* INC_MY_STRUCT_H_ */

@@ -2935,6 +2935,18 @@ Discarded input sections
  .rodata        0x00000000        0xd ./my_driver/Src/my_struct.o
  .text.CreateNode
                 0x00000000       0x3c ./my_driver/Src/my_struct.o
+ .text.CreateNodeData_U8
+                0x00000000       0x44 ./my_driver/Src/my_struct.o
+ .text.CreateNodeData_U16
+                0x00000000       0x44 ./my_driver/Src/my_struct.o
+ .text.CreateNodeData_U32
+                0x00000000       0x44 ./my_driver/Src/my_struct.o
+ .text.CreateNodeData_F32
+                0x00000000       0x44 ./my_driver/Src/my_struct.o
+ .text.CreateNodeData_DB
+                0x00000000       0x48 ./my_driver/Src/my_struct.o
+ .text.CreateNodeData_PC
+                0x00000000       0x44 ./my_driver/Src/my_struct.o
  .text.CreateQueue
                 0x00000000       0x3c ./my_driver/Src/my_struct.o
  .text.PushQueue
@@ -2951,12 +2963,12 @@ Discarded input sections
                 0x00000000       0x34 ./my_driver/Src/my_struct.o
  .text.ReleaseSemaphore
                 0x00000000       0x48 ./my_driver/Src/my_struct.o
- .debug_info    0x00000000      0x50c ./my_driver/Src/my_struct.o
- .debug_abbrev  0x00000000      0x160 ./my_driver/Src/my_struct.o
+ .debug_info    0x00000000      0x74e ./my_driver/Src/my_struct.o
+ .debug_abbrev  0x00000000      0x1ba ./my_driver/Src/my_struct.o
  .debug_aranges
-                0x00000000       0x68 ./my_driver/Src/my_struct.o
+                0x00000000       0x98 ./my_driver/Src/my_struct.o
  .debug_rnglists
-                0x00000000       0x4b ./my_driver/Src/my_struct.o
+                0x00000000       0x6f ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000      0x18b ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000      0xab4 ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000       0x22 ./my_driver/Src/my_struct.o
@@ -2990,10 +3002,10 @@ Discarded input sections
  .debug_macro   0x00000000       0x1c ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000       0x16 ./my_driver/Src/my_struct.o
  .debug_macro   0x00000000      0x146 ./my_driver/Src/my_struct.o
- .debug_line    0x00000000      0x82b ./my_driver/Src/my_struct.o
- .debug_str     0x00000000     0x7ad1 ./my_driver/Src/my_struct.o
+ .debug_line    0x00000000      0x92c ./my_driver/Src/my_struct.o
+ .debug_str     0x00000000     0x7bc6 ./my_driver/Src/my_struct.o
  .comment       0x00000000       0x44 ./my_driver/Src/my_struct.o
- .debug_frame   0x00000000      0x17c ./my_driver/Src/my_struct.o
+ .debug_frame   0x00000000      0x254 ./my_driver/Src/my_struct.o
  .ARM.attributes
                 0x00000000       0x34 ./my_driver/Src/my_struct.o
  .group         0x00000000        0xc ./my_driver/Src/task.o

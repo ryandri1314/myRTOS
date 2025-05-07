@@ -20,6 +20,96 @@ Node* CreateNode(My_RTOS_Task *task) {
 	return NULL;
 }
 
+NodeData* CreateNodeData_U8(uint8_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+	NodeData* newNode = (NodeData *)malloc(sizeof(NodeData));
+	if (newNode) {
+		newNode->next = NULL;
+		newNode->ReceiveID = taskIDReceive;
+		newNode->SendID = taskIDSend;
+		newNode->type = TYPE_UINT8;
+		newNode->data.u8 = data;
+		return newNode;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
+NodeData* CreateNodeData_U16(uint16_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+	NodeData* newNode = (NodeData *)malloc(sizeof(NodeData));
+	if (newNode) {
+		newNode->next = NULL;
+		newNode->ReceiveID = taskIDReceive;
+		newNode->SendID = taskIDSend;
+		newNode->type = TYPE_UINT8;
+		newNode->data.u16 = data;
+		return newNode;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
+NodeData* CreateNodeData_U32(uint32_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+	NodeData* newNode = (NodeData *)malloc(sizeof(NodeData));
+	if (newNode) {
+		newNode->next = NULL;
+		newNode->ReceiveID = taskIDReceive;
+		newNode->SendID = taskIDSend;
+		newNode->type = TYPE_UINT8;
+		newNode->data.u32 = data;
+		return newNode;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
+NodeData* CreateNodeData_F32(float data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+	NodeData* newNode = (NodeData *)malloc(sizeof(NodeData));
+	if (newNode) {
+		newNode->next = NULL;
+		newNode->ReceiveID = taskIDReceive;
+		newNode->SendID = taskIDSend;
+		newNode->type = TYPE_UINT8;
+		newNode->data.f32 = data;
+		return newNode;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
+NodeData* CreateNodeData_DB(double data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+	NodeData* newNode = (NodeData *)malloc(sizeof(NodeData));
+	if (newNode) {
+		newNode->next = NULL;
+		newNode->ReceiveID = taskIDReceive;
+		newNode->SendID = taskIDSend;
+		newNode->type = TYPE_UINT8;
+		newNode->data.db = data;
+		return newNode;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
+NodeData* CreateNodeData_PC(char *data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+	NodeData* newNode = (NodeData *)malloc(sizeof(NodeData));
+	if (newNode) {
+		newNode->next = NULL;
+		newNode->ReceiveID = taskIDReceive;
+		newNode->SendID = taskIDSend;
+		newNode->type = TYPE_UINT8;
+		newNode->data.pc = data;
+		return newNode;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
 /* Queue Function */
 My_Queue* CreateQueue() {
 	My_Queue* queue = (My_Queue *)malloc(sizeof(My_Queue));
@@ -155,4 +245,46 @@ void ReleaseSemaphore(My_RTOS_Control *mControl, My_Semaphore *mSe) {
 		PushQueue(&mControl->RTOS_ReadyTasks, tempNode->task);
 	}
 	free(tempNode);
+}
+
+/* MessQueue Function */
+My_MessQueue* CreateMessQueue() {
+	My_MessQueue *mQueue = (My_MessQueue *)malloc(sizeof(My_MessQueue));
+	if (mQueue) {
+		mQueue->front = NULL;
+		mQueue->rear = NULL;
+		mQueue->WaitingTasks = *CreateQueue();
+		return mQueue;
+	} else {
+		 perror("Over memory!");
+	}
+	return NULL;
+}
+
+void MessQueueSend_U8(My_MessQueue *mDataQueue, uint8_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+
+}
+
+void MessQueueSend_U16(My_MessQueue *mDataQueue, uint16_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+
+}
+
+void MessQueueSend_U32(My_MessQueue *mDataQueue, uint32_t data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+
+}
+
+void MessQueueSend_F32(My_MessQueue *mDataQueue, float data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+
+}
+
+void MessQueueSend_DB(My_MessQueue *mDataQueue, double data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+
+}
+
+void MessQueueSend_PC(My_MessQueue *mDataQueue, char* data, uint8_t taskIDSend, uint8_t taskIDReceive) {
+
+}
+
+NodeData* MessQueueReceive(My_MessQueue *mDataQueue, uint8_t taskIDSend, uint8_t taskIDReceive) {
+
 }
