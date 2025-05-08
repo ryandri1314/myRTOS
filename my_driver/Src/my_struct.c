@@ -148,31 +148,6 @@ void PushQueue(My_Queue *mQueue, My_RTOS_Task *task) {
 	}
 }
 
-void PushMessQueue(My_MessQueue *mMessQueue, NodeData *mNode) {
-	if (mMessQueue->front == NULL) {
-		mMessQueue->front = mNode;
-		mMessQueue->rear = mNode;
-	} else {
-		mNode->next = mMessQueue->front;
-		mMessQueue->front = mNode;
-	}
-}
-
-NodeData* PopMessQueue(My_MessQueue *mMessQueue) {
-	if (mMessQueue->front == mMessQueue->rear) {
-		NodeData *ret = mMessQueue->front;
-		ret->next = NULL;
-		mMessQueue->front = NULL;
-		mMessQueue->rear = NULL;
-		return ret;
-	} else {
-		NodeData *ret = mMessQueue->front;
-		mMessQueue->front = ret->next;
-		ret->next = NULL;
-		return ret;
-	}
-}
-
 Node* PopQueue(My_Queue *mQueue) {
 	if (!mQueue->front) {
 		return NULL;
@@ -273,6 +248,31 @@ void ReleaseSemaphore(My_RTOS_Control *mControl, My_Semaphore *mSe) {
 }
 
 /* MessQueue Function */
+void PushMessQueue(My_MessQueue *mMessQueue, NodeData *mNode) {
+	if (mMessQueue->front == NULL) {
+		mMessQueue->front = mNode;
+		mMessQueue->rear = mNode;
+	} else {
+		mMessQueue->rear->next = mNode;
+		mMessQueue->rear = mNode;
+	}
+}
+
+NodeData* PopMessQueue(My_MessQueue *mMessQueue) {
+	if (mMessQueue->front == mMessQueue->rear) {
+		NodeData *ret = mMessQueue->front;
+		ret->next = NULL;
+		mMessQueue->front = NULL;
+		mMessQueue->rear = NULL;
+		return ret;
+	} else {
+		NodeData *ret = mMessQueue->front;
+		mMessQueue->front = ret->next;
+		ret->next = NULL;
+		return ret;
+	}
+}
+
 My_MessQueue* CreateMessQueue() {
 	My_MessQueue *mQueue = (My_MessQueue *)malloc(sizeof(My_MessQueue));
 	if (mQueue) {
